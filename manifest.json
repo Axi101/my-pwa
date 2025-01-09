@@ -1,13 +1,12 @@
 {
   "name": "My PWA",
   "short_name": "PWA",
-  "start_url": "/my-pwa/",  // Make sure this path is correct
-  "display": "standalone",
+  "start_url": "/my-pwa/",  
   "background_color": "#ffffff",
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "/my-pwa/Logo%20obs.jpeg",  // Correct logo path
+      "src": "/my-pwa/Logo%20obs.jpeg",  
       "sizes": "250x250",
       "type": "image/jpeg"
     }
