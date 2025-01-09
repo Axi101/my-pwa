@@ -132,9 +132,37 @@
         width: 100%;
       }
     }
+
+    #splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  #splash-screen img {
+    width: 150px;
+    height: auto;
+  }
+
+  body.loaded #splash-screen {
+    display: none;
+  }
   </style>
 </head>
 <body>
+  
+    <div id="splash-screen">
+      <img src="/my-pwa/Logo%20obs.jpeg" alt="Logo">
+    </div>
+    <!-- Rest of your content -->
+  
 
   <!-- Header with Logo -->
   <div id="header">
@@ -259,6 +287,13 @@
         alert("Incorrect password");
       }
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+  }, 3000); // Splash screen duration
+});
+
   </script>
 </body>
 </html>
