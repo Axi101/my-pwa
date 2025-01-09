@@ -147,8 +147,8 @@
     <div id="sidebar-logo">
       <img src="/my-pwa/Logo%20obs.jpeg" alt="Sidebar Logo">
     </div>  
-    <a href="javascript:void(0);" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
-    <a href="javascript:void(0);" onclick="changePage('admin-tools')">Admin Tools</a>
+    <a href="javascript:void(0);" onclick="changePage('links-page'); collapseSidebar()">Link-uri pentru toata lumea</a>
+    <a href="javascript:void(0);" onclick="changePage('admin-tools'); collapseSidebar()">Admin Tools</a>
   </div>
 
   <!-- Main Content -->
@@ -242,6 +242,11 @@
         page.classList.remove('active-page');
       });
       document.getElementById(pageId).classList.add('active-page');
+    }
+
+    function collapseSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = "-250px";  // Collapse the sidebar after clicking a link
     }
     
     function checkPassword(event) {
