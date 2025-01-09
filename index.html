@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Sidebar with Pages</title>
-  
-  <!-- Link to the manifest.json file -->
-  <link rel="manifest" href="manifest.json">
-
+  <link rel="manifest" href="manifest.json"> <!-- Link to the manifest -->
   <style>
     /* Body */
     body {
@@ -141,15 +138,15 @@
 
   <!-- Header with Logo -->
   <div id="header">
-    <img src="file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg" alt="Logo"> <!-- Replace with your logo file -->
+    <img src="https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg" alt="Logo"> <!-- Updated to point to GitHub -->
     <div id="sidebar-button" onclick="toggleSidebar()">☰</div>
   </div>
 
   <!-- Sidebar -->
   <div id="sidebar">
     <div id="sidebar-logo">
-      <img src="file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg" alt="Sidebar Logo"> <!-- Same logo for sidebar -->
-    </div>  
+      <img src="https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg" alt="Sidebar Logo"> <!-- Updated to point to GitHub -->
+    </div>
     <a href="javascript:void(0);" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
     <a href="javascript:void(0);" onclick="changePage('admin-tools')">Admin Tools</a>
   </div>
@@ -226,54 +223,29 @@
 
   <script>
     // Initialize Sidebar hidden by default
-    document.addEventListener('DOMContentLoaded', function() {
-      var sidebar = document.getElementById("sidebar");
-      sidebar.style.left = "-250px";  // Ensure sidebar starts hidden
-    });
-
-    // Toggle Sidebar
     function toggleSidebar() {
-      var sidebar = document.getElementById("sidebar");
-      if (sidebar.style.left === "-250px") {
-        sidebar.style.left = "0";  // Show sidebar
-      } else {
-        sidebar.style.left = "-250px";  // Hide sidebar
-      }
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
     }
 
-    // Change Pages when clicking a sidebar link and close the sidebar
-    function changePage(page) {
-      // Hide all pages
-      var pages = document.querySelectorAll('.page-content');
-      pages.forEach(function(p) {
-        p.classList.remove('active-page');
-      });
-
-      // Show the clicked page
-      var selectedPage = document.getElementById(page);
-      selectedPage.classList.add('active-page');
-
-      // Close the sidebar
-      var sidebar = document.getElementById("sidebar");
-      sidebar.style.left = "-250px";  // Hide sidebar
+    // Change page function
+    function changePage(pageId) {
+      const pages = document.querySelectorAll('.page-content');
+      pages.forEach(page => page.classList.remove('active-page'));
+      document.getElementById(pageId).classList.add('active-page');
     }
 
-    // Password Protection
+    // Password form
     function checkPassword(event) {
-      var password = document.getElementById("password-input").value;
       event.preventDefault();
-
-      if (password === "admin") {
-        var protectedLinks = document.querySelectorAll('.protected-link');
-        protectedLinks.forEach(function(link) {
-          link.style.display = 'block';
-        });
-        document.getElementById("password-form").style.display = 'none';
+      const password = document.getElementById('password-input').value;
+      if (password === 'admin123') {  // Example password
+        document.querySelectorAll('.protected-link').forEach(link => link.style.display = 'block');
+        document.getElementById('password-form').style.display = 'none';
       } else {
-        alert("Incorrect password!");
+        alert('Incorrect password!');
       }
     }
   </script>
-
 </body>
 </html>

@@ -1,22 +1,15 @@
 {
-    "name": "Responsive Sidebar App",
-    "short_name": "Sidebar App",
-    "description": "A responsive sidebar with pages for easy navigation.",
-    "start_url": "indexpwa.html",
-    "display": "standalone",
-    "background_color": "#333",
-    "theme_color": "#333",
-    "icons": [
-      {
-        "src": "file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg",  
-        "sizes": "192x192",
-        "type": "image/jpeg"
-      },
-      {
-        "src": "file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg", 
-        "sizes": "512x512",
-        "type": "image/jpeg"
-      }
-    ]
-  }
-  
+  "name": "My PWA",
+  "short_name": "PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#333333",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg",
+      "sizes": "250x250",
+      "type": "image/jpeg"
+    }
+  ]
+}
