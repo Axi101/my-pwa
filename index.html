@@ -191,14 +191,14 @@
         </form>
       </div>
 
-      <div class="protected-link" style="background-color: #19cf26; padding: 6px 0; text-align: center;">
+      <div class="protected-link" style="background-color: #19cf26; padding: 6px 0; text-align: center; display: none;">
         <a href="https://docs.google.com/spreadsheets/d/169FaeJdhPVA-hYUdyRog4xYnhjh1ZpMh_wuRpDrsog4/edit?gid=646941232#gid=646941232" 
            style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
            Email recenzii
         </a>
       </div>
 
-      <div class="protected-link" style="background-color: #9810b5; padding: 6px 0; text-align: center;">
+      <div class="protected-link" style="background-color: #9810b5; padding: 6px 0; text-align: center; display: none;">
         <a href="https://airtable.com/app4muKu9EPXtqLnA/tbll3dr4obedYOuKM/viwclsabpGtRURtp9" 
            style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
            Stoc rezerve + Curse of Scarab
@@ -214,6 +214,8 @@
       const startUrl = "/my-pwa";
       if (url.includes(startUrl)) {
         document.getElementById("links-page").style.display = "block";
+        document.getElementById("links-btn").style.display = 'block';
+        document.getElementById("admin-tools-btn").style.display = 'block';
       }
     });
 
@@ -230,20 +232,20 @@
       // Show the selected page
       document.getElementById(pageId).style.display = 'block';
       
-      // Toggle sidebar buttons visibility
+      // Keep "Links" button visible and toggle "Admin Tools" button visibility
       if (pageId === 'admin-tools') {
-        document.getElementById("links-btn").style.display = 'none';
-        document.getElementById("admin-tools-btn").style.display = 'block';
-      } else {
         document.getElementById("links-btn").style.display = 'block';
         document.getElementById("admin-tools-btn").style.display = 'none';
+      } else {
+        document.getElementById("links-btn").style.display = 'none';
+        document.getElementById("admin-tools-btn").style.display = 'block';
       }
     }
-    
+
     function checkPassword(event) {
       event.preventDefault();
       const password = document.getElementById("password-input").value;
-      if (password === "admin") {
+      if (password === "adminpassword") {
         document.querySelectorAll(".protected-link").forEach(link => link.style.display = 'block');
         document.getElementById("password-form").style.display = 'none';
       } else {
