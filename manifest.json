@@ -1,13 +1,13 @@
 {
   "name": "My PWA",
   "short_name": "PWA",
-  "start_url": "/my-pwa/",  
+  "start_url": "/my-pwa/",  // Ensure this is the correct path
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg",
+      "src": "/my-pwa/Logo%20obs.jpeg",  // Correct logo path
       "sizes": "250x250",
       "type": "image/jpeg"
     }

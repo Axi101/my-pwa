@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Sidebar with Pages</title>
-  <link rel="manifest" href="/my-pwa/manifest.json"> <!-- Update the path to the manifest -->
+  <link rel="manifest" href="/my-pwa/manifest.json"> <!-- Ensure correct path -->
 
   <style>
     /* Body */
@@ -26,19 +26,19 @@
     }
 
     #header img {
-      position: absolute;  /* Position the logo absolutely */
+      position: absolute;
       top: 0;
       left: 0;
-      height: 250px; /* Set height to 250px */
-      width: 100%;  /* Set width to 100% of the page */
-      object-fit: cover; /* Ensure the image doesn't stretch and maintain aspect ratio */
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
     }
 
     /* Sidebar */
     #sidebar {
       position: fixed;
       top: 0;
-      left: -250px; /* Initially hidden */
+      left: -250px;
       width: 250px;
       height: 100%;
       background-color: #333;
@@ -88,15 +88,15 @@
     #sidebar-logo img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;  /* To keep it round */
+      border-radius: 50%;
       object-fit: cover;
     }
 
     /* Main content */
     .content-container {
-      margin-left: 10px;  /* Move content 44px to the left (64px - 20px) */
+      margin-left: 10px;
       padding: 20px;
-      margin-top: 255px;  /* Push content 255px down (205px + 50px) */
+      margin-top: 255px;
     }
 
     /* Pages */
@@ -122,14 +122,13 @@
     h1 {
       font-family: 'Proxima Nova', sans-serif;
       font-weight: bold;
-      margin-bottom: 30px;  /* Add more space between paragraph and buttons */
-      margin-left: 10px;  /* Move paragraphs 14px to the left */
+      margin-bottom: 30px;
+      margin-left: 10px;
     }
 
-    /* Responsive styling for logo */
     @media (max-width: 768px) {
       #header img {
-        height: 250px;  /* Adjust logo height for mobile */
+        height: 250px;
         width: 100%;
       }
     }
@@ -139,14 +138,14 @@
 
   <!-- Header with Logo -->
   <div id="header">
-    <img src="https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg" alt="Logo"> <!-- Update the logo source -->
+    <img src="/my-pwa/Logo%20obs.jpeg" alt="Logo"> <!-- Correct logo path -->
     <div id="sidebar-button" onclick="toggleSidebar()">☰</div>
   </div>
 
   <!-- Sidebar -->
   <div id="sidebar">
     <div id="sidebar-logo">
-      <img src="https://raw.githubusercontent.com/Axi101/my-pwa/main/Logo%20obs.jpeg" alt="Sidebar Logo"> <!-- Same logo for sidebar -->
+      <img src="/my-pwa/Logo%20obs.jpeg" alt="Sidebar Logo">
     </div>  
     <a href="javascript:void(0);" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
     <a href="javascript:void(0);" onclick="changePage('admin-tools')">Admin Tools</a>
@@ -196,7 +195,6 @@
     <div id="admin-tools" class="page-content">
       <h1>Admin Tools</h1>
 
-      <!-- Password Protection Form -->
       <div id="password-form">
         <form onsubmit="checkPassword(event)">
           <label for="password-input">Enter Password: </label>
@@ -205,7 +203,6 @@
         </form>
       </div>
 
-      <!-- Protected Links (visible after correct password) -->
       <div class="protected-link" style="background-color: #19cf26; padding: 6px 0; text-align: center;">
         <a href="https://docs.google.com/spreadsheets/d/169FaeJdhPVA-hYUdyRog4xYnhjh1ZpMh_wuRpDrsog4/edit?gid=646941232#gid=646941232" 
            style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
@@ -226,19 +223,17 @@
     // Initialize Sidebar hidden by default
     document.addEventListener('DOMContentLoaded', function() {
       const url = window.location.href;
-      const startUrl = "/my-pwa"; // Your base URL path here
+      const startUrl = "/my-pwa";
       if (url.includes(startUrl)) {
         document.getElementById("links-page").style.display = "block";
       }
     });
 
-    // Toggle Sidebar Visibility
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
       sidebar.style.left = (sidebar.style.left === "0px") ? "-250px" : "0";
     }
 
-    // Change page content based on sidebar link
     function changePage(pageId) {
       const pages = document.querySelectorAll('.page-content');
       pages.forEach(page => {
@@ -247,11 +242,10 @@
       document.getElementById(pageId).classList.add('active-page');
     }
     
-    // Password validation
     function checkPassword(event) {
       event.preventDefault();
       const password = document.getElementById("password-input").value;
-      if (password === "adminpassword") {  // Replace with your password
+      if (password === "adminpassword") {
         document.querySelectorAll(".protected-link").forEach(link => link.style.display = 'block');
         document.getElementById("password-form").style.display = 'none';
       } else {
