@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Sidebar with Pages</title>
-  <link rel="manifest" href="/my-pwa/manifest.json"> <!-- Ensure correct path -->
+  <link rel="manifest" href="/my-pwa/manifest.json"> <!-- Correct path for manifest -->
 
   <style>
     /* Body */
@@ -101,17 +101,7 @@
 
     /* Pages */
     .page-content {
-      display: block;
-    }
-
-    /* Password Protection */
-    .protected-link {
       display: none;
-      margin-bottom: 15px;
-    }
-
-    #password-form {
-      display: block;
     }
 
     /* Paragraphs style */
@@ -233,6 +223,13 @@
     }
 
     function changePage(pageId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page-content');
+      pages.forEach(page => page.style.display = 'none');
+      
+      // Show the selected page
+      document.getElementById(pageId).style.display = 'block';
+      
       // Toggle sidebar buttons visibility
       if (pageId === 'admin-tools') {
         document.getElementById("links-btn").style.display = 'none';
@@ -246,7 +243,7 @@
     function checkPassword(event) {
       event.preventDefault();
       const password = document.getElementById("password-input").value;
-      if (password === "adminpassword") {
+      if (password === "admin") {
         document.querySelectorAll(".protected-link").forEach(link => link.style.display = 'block');
         document.getElementById("password-form").style.display = 'none';
       } else {
