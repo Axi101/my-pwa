@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Sidebar with Pages</title>
+  
+  <!-- Link to the manifest.json file -->
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Body */
+    body {
+      background-color: #d1d1e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* Header */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    #header img {
+      position: absolute;  /* Position the logo absolutely */
+      top: 0;
+      left: 0;
+      height: 250px; /* Set height to 250px */
+      width: 100%;  /* Set width to 100% of the page */
+      object-fit: cover; /* Ensure the image doesn't stretch and maintain aspect ratio */
+    }
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Initially hidden */
+      width: 250px;
+      height: 100%;
+      background-color: #333;
+      transition: left 0.3s;
+      padding-top: 20px;
+      color: white;
+    }
+
+    #sidebar a {
+      padding: 8px 16px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    #sidebar a:hover {
+      background-color: #575757;
+    }
+
+    /* Sidebar button (hamburger) */
+    #sidebar-button {
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px 15px;
+      background-color: transparent;
+      color: white;
+      border: none;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      z-index: 999;
+    }
+
+    /* Sidebar logo */
+    #sidebar-logo {
+      display: block;
+      margin: 0 auto;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+
+    #sidebar-logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;  /* To keep it round */
+      object-fit: cover;
+    }
+
+    /* Main content */
+    .content-container {
+      margin-left: 10px;  /* Move content 44px to the left (64px - 20px) */
+      padding: 20px;
+      margin-top: 255px;  /* Push content 255px down (205px + 50px) */
+    }
+
+    /* Pages */
+    .page-content {
+      display: none;
+    }
+
+    .active-page {
+      display: block;
+    }
+
+    /* Password Protection */
+    .protected-link {
+      display: none;
+      margin-bottom: 15px;
+    }
+
+    #password-form {
+      display: block;
+    }
+
+    /* Paragraphs style */
+    h1 {
+      font-family: 'Proxima Nova', sans-serif;
+      font-weight: bold;
+      margin-bottom: 30px;  /* Add more space between paragraph and buttons */
+      margin-left: 10px;  /* Move paragraphs 14px to the left */
+    }
+
+    /* Responsive styling for logo */
+    @media (max-width: 768px) {
+      #header img {
+        height: 250px;  /* Adjust logo height for mobile */
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Logo -->
+  <div id="header">
+    <img src="file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg" alt="Logo"> <!-- Replace with your logo file -->
+    <div id="sidebar-button" onclick="toggleSidebar()">☰</div>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div id="sidebar-logo">
+      <img src="file:///C:/Users/raul1/Downloads/MyFlow/Logo%20obs.jpeg" alt="Sidebar Logo"> <!-- Same logo for sidebar -->
+    </div>  
+    <a href="javascript:void(0);" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
+    <a href="javascript:void(0);" onclick="changePage('admin-tools')">Admin Tools</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-container">
+    <div id="links-page" class="page-content active-page">
+      <h1>Link-uri pentru toata lumea</h1>
+      <!-- Button Links for the first page -->
+      <div style="background-color: #37e913; padding: 6px 0; text-align: center; margin-bottom: 20px;">
+        <a href="https://docs.google.com/spreadsheets/d/1Iq3L8m9WRomw0PPGnVdnz_a-ZDxV3DZQE2nW76mCtm4/edit?gid=302874204#gid=302874204" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Tabel (Google Sheets)
+        </a>
+      </div>
+
+      <div style="background-color: #62d5ff; padding: 6px 0; text-align: center; margin-bottom: 20px;">
+        <a href="https://secure.acuityscheduling.com/appointments.php?view=day&upnext=1&day=today&scale=1" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Acuity
+        </a>
+      </div>
+
+      <div style="background-color: #ffaa00; padding: 6px 0; text-align: center; margin-bottom: 20px;">
+        <a href="http://192.168.1.2:2020/observer#" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Observer
+        </a>
+      </div>
+
+      <div style="background-color: #3d7de5; padding: 6px 0; text-align: center; margin-bottom: 20px;">
+        <a href="https://cloud.smartbill.ro" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           SmartBill
+        </a>
+      </div>
+
+      <div style="background-color: #b700fb; padding: 6px 0; text-align: center; margin-bottom: 20px;">
+        <a href="https://airtable.com/app4muKu9EPXtqLnA/pagwnyYRmUfF26pCg/form" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Form rezerve + Curse of Scarab
+        </a>
+      </div>
+    </div>
+
+    <div id="admin-tools" class="page-content">
+      <h1>Admin Tools</h1>
+
+      <!-- Password Protection Form -->
+      <div id="password-form">
+        <form onsubmit="checkPassword(event)">
+          <label for="password-input">Enter Password: </label>
+          <input type="password" id="password-input" required>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- Protected Links (visible after correct password) -->
+      <div class="protected-link" style="background-color: #19cf26; padding: 6px 0; text-align: center;">
+        <a href="https://docs.google.com/spreadsheets/d/169FaeJdhPVA-hYUdyRog4xYnhjh1ZpMh_wuRpDrsog4/edit?gid=646941232#gid=646941232" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Email recenzii
+        </a>
+      </div>
+
+      <div class="protected-link" style="background-color: #9810b5; padding: 6px 0; text-align: center;">
+        <a href="https://airtable.com/app4muKu9EPXtqLnA/tbll3dr4obedYOuKM/viwclsabpGtRURtp9" 
+           style="text-decoration: none; color: black; font-size: 16px; padding: 0px 0px; display: inline-block;">
+           Stoc rezerve + Curse of Scarab
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Sidebar hidden by default
+    document.addEventListener('DOMContentLoaded', function() {
+      var sidebar = document.getElementById("sidebar");
+      sidebar.style.left = "-250px";  // Ensure sidebar starts hidden
+    });
+
+    // Toggle Sidebar
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      if (sidebar.style.left === "-250px") {
+        sidebar.style.left = "0";  // Show sidebar
+      } else {
+        sidebar.style.left = "-250px";  // Hide sidebar
+      }
+    }
+
+    // Change Pages when clicking a sidebar link and close the sidebar
+    function changePage(page) {
+      // Hide all pages
+      var pages = document.querySelectorAll('.page-content');
+      pages.forEach(function(p) {
+        p.classList.remove('active-page');
+      });
+
+      // Show the clicked page
+      var selectedPage = document.getElementById(page);
+      selectedPage.classList.add('active-page');
+
+      // Close the sidebar
+      var sidebar = document.getElementById("sidebar");
+      sidebar.style.left = "-250px";  // Hide sidebar
+    }
+
+    // Password Protection
+    function checkPassword(event) {
+      var password = document.getElementById("password-input").value;
+      event.preventDefault();
+
+      if (password === "admin") {
+        var protectedLinks = document.querySelectorAll('.protected-link');
+        protectedLinks.forEach(function(link) {
+          link.style.display = 'block';
+        });
+        document.getElementById("password-form").style.display = 'none';
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+  </script>
+
+</body>
+</html>
