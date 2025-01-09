@@ -147,9 +147,11 @@
   }
 
   #splash-screen img {
-    width: 150px;
-    height: auto;
-  }
+  width: 300px; /* Increase width */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 80%; /* Ensure it fits smaller screens */
+}
+
 
   body.loaded #splash-screen {
     display: none;
