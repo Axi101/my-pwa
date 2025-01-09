@@ -153,6 +153,7 @@
 
   <!-- Main Content -->
   <div class="content-container">
+    <!-- Links Page -->
     <div id="links-page" class="page-content active-page">
       <h1>Link-uri pentru toata lumea</h1>
       <!-- Button Links for the first page -->
@@ -192,6 +193,7 @@
       </div>
     </div>
 
+    <!-- Admin Tools Page -->
     <div id="admin-tools" class="page-content">
       <h1>Admin Tools</h1>
 
@@ -245,7 +247,7 @@
     function checkPassword(event) {
       event.preventDefault();
       const password = document.getElementById("password-input").value;
-      if (password === "adminpassword") {
+      if (password === "admin") {
         document.querySelectorAll(".protected-link").forEach(link => link.style.display = 'block');
         document.getElementById("password-form").style.display = 'none';
       } else {
