@@ -101,10 +101,6 @@
 
     /* Pages */
     .page-content {
-      display: none;
-    }
-
-    .active-page {
       display: block;
     }
 
@@ -154,7 +150,7 @@
   <!-- Main Content -->
   <div class="content-container">
     <!-- Links Page -->
-    <div id="links-page" class="page-content active-page">
+    <div id="links-page" class="page-content">
       <h1>Link-uri pentru toata lumea</h1>
       <!-- Button Links for the first page -->
       <div style="background-color: #37e913; padding: 6px 0; text-align: center; margin-bottom: 20px;">
@@ -237,13 +233,7 @@
     }
 
     function changePage(pageId) {
-      const pages = document.querySelectorAll('.page-content');
-      pages.forEach(page => {
-        page.classList.remove('active-page');
-      });
-      document.getElementById(pageId).classList.add('active-page');
-
-      // Toggle buttons visibility
+      // Toggle sidebar buttons visibility
       if (pageId === 'admin-tools') {
         document.getElementById("links-btn").style.display = 'none';
         document.getElementById("admin-tools-btn").style.display = 'block';
