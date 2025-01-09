@@ -147,8 +147,8 @@
     <div id="sidebar-logo">
       <img src="/my-pwa/Logo%20obs.jpeg" alt="Sidebar Logo">
     </div>  
-    <a href="javascript:void(0);" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
-    <a href="javascript:void(0);" onclick="changePage('admin-tools')">Admin Tools</a>
+    <a href="javascript:void(0);" id="links-btn" onclick="changePage('links-page')">Link-uri pentru toata lumea</a>
+    <a href="javascript:void(0);" id="admin-tools-btn" onclick="changePage('admin-tools')">Admin Tools</a>
   </div>
 
   <!-- Main Content -->
@@ -242,6 +242,15 @@
         page.classList.remove('active-page');
       });
       document.getElementById(pageId).classList.add('active-page');
+
+      // Toggle buttons visibility
+      if (pageId === 'admin-tools') {
+        document.getElementById("links-btn").style.display = 'none';
+        document.getElementById("admin-tools-btn").style.display = 'block';
+      } else {
+        document.getElementById("links-btn").style.display = 'block';
+        document.getElementById("admin-tools-btn").style.display = 'none';
+      }
     }
     
     function checkPassword(event) {
