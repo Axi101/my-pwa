@@ -13,6 +13,14 @@
       background-color: #d1d1e0;
       font-family: Arial, sans-serif;
       margin: 0;
+      body {
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  margin: 0; /* Optional: Ensures no margins outside the safe area */
+}
+
     }
 
     /* Header */
